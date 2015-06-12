@@ -1,0 +1,5 @@
+First we need to add the components(they are gonna show the data in graphics).
+This is the function to create and add to the dashboard
+	$chart = new ChartComponent();
+	// [.. configure component here ..]
+	$this->addComponent($chart);
