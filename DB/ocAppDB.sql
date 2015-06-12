@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2015 at 03:56 AM
+-- Generation Time: Jun 12, 2015 at 05:09 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -29,7 +29,15 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `Category` (
   `category_id` int(11) NOT NULL,
   `category_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Category`
+--
+
+INSERT INTO `Category` (`category_id`, `category_description`) VALUES
+(1, 'Category1'),
+(2, 'Category2');
 
 -- --------------------------------------------------------
 
@@ -39,13 +47,20 @@ CREATE TABLE IF NOT EXISTS `Category` (
 
 CREATE TABLE IF NOT EXISTS `Task` (
   `task_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `task_name` text NOT NULL,
   `task_type_id` int(11) NOT NULL,
   `task_description` text NOT NULL,
   `task_time` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Task`
+--
+
+INSERT INTO `Task` (`task_id`, `task_name`, `task_type_id`, `task_description`, `task_time`, `category_id`) VALUES
+(1, 'Task1', 1, 'Task1Description', 20, 1),
+(2, 'Task2', 2, 'Task2Description', 40, 2);
 
 -- --------------------------------------------------------
 
@@ -56,7 +71,15 @@ CREATE TABLE IF NOT EXISTS `Task` (
 CREATE TABLE IF NOT EXISTS `Task_type` (
   `task_type_id` int(11) NOT NULL,
   `task_type_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Task_type`
+--
+
+INSERT INTO `Task_type` (`task_type_id`, `task_type_description`) VALUES
+(1, 'TaskType1'),
+(2, 'TaskType2');
 
 -- --------------------------------------------------------
 
@@ -67,7 +90,15 @@ CREATE TABLE IF NOT EXISTS `Task_type` (
 CREATE TABLE IF NOT EXISTS `Team` (
   `team_id` int(11) NOT NULL,
   `team_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Team`
+--
+
+INSERT INTO `Team` (`team_id`, `team_description`) VALUES
+(1, 'Team1'),
+(2, 'Team2');
 
 -- --------------------------------------------------------
 
@@ -104,7 +135,15 @@ CREATE TABLE IF NOT EXISTS `User_task` (
   `user_task_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `User_task`
+--
+
+INSERT INTO `User_task` (`user_task_id`, `user_id`, `task_id`) VALUES
+(1, 2, 1),
+(2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -116,7 +155,16 @@ CREATE TABLE IF NOT EXISTS `User_team` (
   `user_team_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `team_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `User_team`
+--
+
+INSERT INTO `User_team` (`user_team_id`, `user_id`, `team_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -199,22 +247,22 @@ ALTER TABLE `User_type`
 -- AUTO_INCREMENT for table `Category`
 --
 ALTER TABLE `Category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Task`
 --
 ALTER TABLE `Task`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Task_type`
 --
 ALTER TABLE `Task_type`
-  MODIFY `task_type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Team`
 --
 ALTER TABLE `Team`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `User`
 --
@@ -224,12 +272,12 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `User_task`
 --
 ALTER TABLE `User_task`
-  MODIFY `user_task_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `User_team`
 --
 ALTER TABLE `User_team`
-  MODIFY `user_team_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `User_type`
 --
