@@ -1,5 +1,6 @@
-#OCAppNew
+We use this application mainly as a way to track our contribution to One Community. It is also used for internal communication, organizing teams, and reporting progress.
 
-test
-test2
-test3
+Igor Castro
+Matheus Oliveira
+Marco Silva
+Natalia Costa
