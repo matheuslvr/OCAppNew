@@ -28,6 +28,7 @@ $user_tel = "";
 $user_mail = "";
 $day_hour = "";
 
+
 if(date("h") >= 0 && date("h") < 12){
 	$day_hour = "Good morning";
 }
@@ -98,15 +99,15 @@ if (mysqli_num_rows($result5) > 0) {
 <html>
 <head>
 	<title> Highest Good Network </title>
-	<link href="styles/profile.css" rel="stylesheet">
+	<link href="styles/tasks.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,100' rel='stylesheet' type='text/css'>
+	<script src="scripts/tasks.js"></script>
 </head>
 <body>
-
 	<nav>
 		<ul>
-			<li> <a href="profile.php" class="active"> PROFILE </a> </li>
-			<li> <a href="tasks.php"> TASKS </a> </li>
+			<li> <a href="profile.php"> PROFILE </a> </li>
+			<li> <a href="tasks.php" class="active"> TASKS </a> </li>
 			<li> <a href="#"> REPORTS </a> </li>
 			<li> <a href="#"> SETUP </a> </li>
 			<li> <a href="#"> PORTAL </a> </li>
@@ -119,33 +120,28 @@ if (mysqli_num_rows($result5) > 0) {
 
 		<article class="artLeft">
 
-			<img src="img/pictureIcon.png">
+			<a href="#" onClick="changeDescription('1')">description1</a>
+            <a href="#" onClick="changeDescription('2')">description2</a>
+			
 
 		</article>
 
 		<article class="artRight">
+			<div class="divCreateTask">
+				<a href="#" class="active"> <img src="img/addTaskIcon.png" class="icon">
+				<h2>Create Task</h2>
+				</a>
+			</div>
+			<div class="taskDescriptionTitle">
+				<h3>Task Description</h3>
+			</div>
+			<div class="taskDescription">
+				<div class="taskDescriptionText">
+				<h1 id="taskDescriptionText">Description 1</h1>
+				</div>
+				<a href="#" class="active"> <img src="img/editIcon.png" class="icon">
+			</div>
 
-			<h1> <?php echo $user_name ?> </h1> <!-- PHP AQUI FOFÍSSIMA -->
-
-
-			<table>
-				<tr>
-					<td><img src="img/loginIcon.png" class="icon"></td>
-					<td valign="middle"><?php echo $username ?></td>
-				</tr>
-				<tr>
-					<td><img src="img/userTypeIcon.png" class="icon"></td>
-					<td valign="middle"><?php echo $user_type_id ?></td>
-				</tr>
-				<tr>
-					<td><img src="img/phoneIcon.png" class="icon"></td>
-					<td valign="middle"><?php echo $user_tel ?></td>
-				</tr>
-				<tr>
-					<td><img src="img/emailIcon.png" class="icon"></td>
-					<td valign="middle"><?php echo $user_mail ?></td>
-				</tr>
-			</table>
 
 		</article>
 
@@ -154,29 +150,6 @@ if (mysqli_num_rows($result5) > 0) {
 
 	<footer>
 
-		<!-- PHP AQUI TAMBEM -->
-
-		<div class="footLeft">
-
-			<h1 class="test"> <?php echo $hours_tasks ?> </h1>
-			<h2 class="test"> Hours </h2>
-			<h3 class="test"> /week </h3>
-
-		</div>
-
-		<div class="footMid">
-
-			<h1 class="test"> <?php echo $user_team ?> </h1>
-			<h2 class="test"> Team </h2>
-
-		</div>
-
-		<div class="footRight">
-
-			<h1 class="test"> <?php echo $number_tasks ?> </h1>
-			<h2 class="test"> Tasks </h2>
-
-		</div>
 
 	</footer>
 
