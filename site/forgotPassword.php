@@ -11,20 +11,15 @@
 	<!-- LOGO AQUI -->
 
 	<section class="main">
-			<form class="form-1" action="loginAuth.php" method="POST">
+			<form class="form-1" action="resetPassword.php" method="POST">
+				<h2 class = "type"> Type your email here </h2>
 				<p class="field">
-					<input type="text" name="username" placeholder="Username">
+					<input type="text" name="email" placeholder="Email">
 				<i class="icon-user icon-large"></i>
-			</p>
-			<p class="field">
-				<input type="password" name="password" placeholder="Password">
-				<i class="icon-lock icon-large"></i>
 			</p>
 			<p class="submit">
 				<button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
 			</p>
-
-		<h2><a href="forgotPassword.php" class="forgot"> Forgot your password? </a></h2>
 		</form>
 	</section>
 
