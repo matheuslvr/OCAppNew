@@ -24,71 +24,31 @@ if ($conn->connect_error) {
 echo "Connected successfully <br>";
 
 
-
-$counter1 = 0;
+// Execute query and get the variables from the database
 $counter = 0;
-//$time_task = array(0);
-//$name_task = array("");
-$sql5 = "SELECT task_name FROM Task WHERE task_name IS NOT NULL";
+$sql5 = "SELECT task_name, task_time FROM Task";
 $result5 = mysqli_query($conn, $sql5);
 if (mysqli_num_rows($result5) > 0) {
-	while ($row = mysqli_fetch_assoc($result5)) {
+	while ($row = mysqli_fetch_assoc($result5)) { // run while the lines are not empty
 		
 		$name_task[$counter] = $row["task_name"];
-//		$time_task[$counter] = $row["task_time"];
-//		echo $counter;
-//		echo $time_task[$counter];
+		$time_task[$counter] = $row["task_time"];
 		$counter++;
-		//echo $name_task[1];
-//		echo $time_task[$counter];
-
-//		echo $time_task[$counter];
-//		echo $row["task_time"];
 	}
 }
-$sql6 = "SELECT task_time FROM Task WHERE task_time IS NOT NULL";
-$result6 = mysqli_query($conn, $sql6);
-if (mysqli_num_rows($result6) > 0) {
-	while ($row = mysqli_fetch_assoc($result6)) {
-		
-//		$name_task[$counter] = $row["task_name"];
-		$time_task[$counter1] = $counter+1;
-//		echo $counter;
-		
-		$counter1++;
-		//echo $name_task[1];
-//		echo $time_task[$counter];
-
-//		echo $time_task[$counter];
-//		echo $row["task_time"];
-	}
-}
-
-echo $time_task[0];
-		echo "<br>";
-		echo $time_task[1];
-/*
-$cars = array("Volvo", "BMW", "Corsa", "uhaseua", "hahaha", "hhhhhh");
-$arrlength = count($cars);
-$num = array(17, 35, 17, 17, 17, 20);
-$numlength = count($num);
-*/
- 
-$num = array(8.5, 7.5);
 
 $arrlength = count($name_task);
-//echo $arrlength;
+
 $p = new chartphp();
 
+// creating the arrays
 for($x = 0; $x < $arrlength; $x++){
 
-$arrays[$x] = array($name_task[$x], $time_task[$x]);
+$arrays[$x] = array($name_task[$x], (int)$time_task[$x]);
 
 }
-//echo $time_task[0] . $time_task[1];
 
-$p->data = array($arrays);
-
+$p->data = array($arrays); // Set the arrays as the data to print the graph
 
 $p->chart_type = "pie";
 
