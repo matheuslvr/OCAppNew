@@ -26,21 +26,6 @@ $user_name = "";
 $user_type_id = "";
 $user_tel = "";
 $user_mail = "";
-$day_hour = "";
-date_default_timezone_set('America/Los_Angeles');
-
-if(date("h") >= 0 && date("h") < 12){
-	$day_hour = "Good morning";
-}
-else if(date("h") >= 12 && date("h") < 18){
-	$day_hour = "Good afternoon";
-}
-else if(date("h") >= 18 && date("h") < 24){
-	$day_hour = "Good evening";
-}
-else{
-	$day_hour = "Hi";
-}
 
 $sql = "SELECT user_id, user_first_name, user_last_name, user_type_id, user_tel, user_mail FROM User WHERE user_login = '{$username}'";
 $result = mysqli_query($conn, $sql);
@@ -109,13 +94,13 @@ if (mysqli_num_rows($result5) > 0) {
 
 	<nav>
 		<ul>
-			<li> <a href="profile.php" class="active"> PROFILE </a> </li>
-			<li> <a href="tasks.php"> TASKS </a> </li>
+			<li> <a href="#" class="active"> PROFILE </a> </li>
+			<li> <a href="#"> TASKS </a> </li>
 			<li> <a href="#"> REPORTS </a> </li>
 			<li> <a href="setup.php"> SETUP </a> </li>
 			<li> <a href="#"> PORTAL </a> </li>
 			<li class="right img"> <a href="sessionStop.php"> <img src="img/logoutIcon.png" alt="Logout"> </a> </li>
-			<li class="right"> <?php echo $day_hour ?>, <?php echo $user_name ?> </li>
+			<li class="right"> Hi, <?php echo $user_name ?> </li>
 		</ul>
 	</nav>
 
