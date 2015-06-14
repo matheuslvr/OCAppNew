@@ -27,7 +27,7 @@ $user_type_id = "";
 $user_tel = "";
 $user_mail = "";
 $day_hour = "";
-
+date_default_timezone_set('America/Los_Angeles');
 
 if(date("h") >= 0 && date("h") < 12){
 	$day_hour = "Good morning";
@@ -35,7 +35,7 @@ if(date("h") >= 0 && date("h") < 12){
 else if(date("h") >= 12 && date("h") < 18){
 	$day_hour = "Good afternoon";
 }
-else if(date("h") >= 18 && date("h") <= 23){
+else if(date("h") >= 18 && date("h") <24){
 	$day_hour = "Good evening";
 }
 else{
@@ -119,10 +119,32 @@ if (mysqli_num_rows($result5) > 0) {
 	<content>
 
 		<article class="artLeft">
-
-			<a href="#" onClick="changeDescription('1')">description1</a>
-            <a href="#" onClick="changeDescription('2')">description2</a>
 			
+		<div class="divUserTask">
+			<img src="img/pictureIcon.png">
+			<h2> <?php echo $user_name ?> </h2>
+		</div>
+		<div class = "divTopTasksList">
+			<h3> Week of 6/8 - 6/14 </h3>
+		</div>
+		<div class = "divContentTasksList">
+			<ul>
+				<li><a href="#" onClick="changeDescription('1')">description1</a></li>
+            	<li><a href="#" onClick="changeDescription('2')">description2</a></li>
+            <ul>
+		</div>
+
+		<div class = "divFooterTasksList">
+			<ul>
+				<li><img src="img/redBallIcon.png"></li>
+				
+				<li><img src="img/yellowBallIcon.png"></li>
+				
+				<li><img src="img/greenBallIcon.png"></li>
+				
+			</ul>
+			
+		</div>
 
 		</article>
 
@@ -132,11 +154,11 @@ if (mysqli_num_rows($result5) > 0) {
 				<h2>Create Task</h2>
 				</a>
 			</div>
-			<div class="taskDescriptionTitle">
+			<div class="divTaskDescriptionTitle">
 				<h3>Task Description</h3>
 			</div>
-			<div class="taskDescription">
-				<div class="taskDescriptionText">
+			<div class="divTaskDescription">
+				<div class="divTaskDescriptionText">
 				<h1 id="taskDescriptionText">Description 1</h1>
 				</div>
 				<a href="#" class="active"> <img src="img/editIcon.png" class="icon">

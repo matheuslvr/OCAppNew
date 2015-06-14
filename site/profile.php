@@ -27,6 +27,7 @@ $user_type_id = "";
 $user_tel = "";
 $user_mail = "";
 $day_hour = "";
+date_default_timezone_set('America/Los_Angeles');
 
 if(date("h") >= 0 && date("h") < 12){
 	$day_hour = "Good morning";
@@ -34,7 +35,7 @@ if(date("h") >= 0 && date("h") < 12){
 else if(date("h") >= 12 && date("h") < 18){
 	$day_hour = "Good afternoon";
 }
-else if(date("h") >= 18 && date("h") <= 23){
+else if(date("h") >= 18 && date("h") < 24){
 	$day_hour = "Good evening";
 }
 else{
