@@ -47,9 +47,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result)) {
     $row = mysqli_fetch_assoc($result);
     $user_id = $row["user_id"];
-    $user_name = $row["user_first_name"] . " ";
-    $user_name .= $row["user_last_name"];
-    $_SESSION["user_name"] = $user_name;
+    $user_name = $row["user_first_name"] . " " . $row["user_last_name"];
     $user_type_id = $row["user_type_id"];
     $user_tel = $row["user_tel"];
     $user_mail = $row["user_mail"];
@@ -102,7 +100,6 @@ if (mysqli_num_rows($result5) > 0) {
 <head>
 	<title> Highest Good Network </title>
 	<link href="styles/profile.css" rel="stylesheet">
-	<link href="styles/basicStyle.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,100' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -112,7 +109,7 @@ if (mysqli_num_rows($result5) > 0) {
 			<li> <a href="profile.php" class="active"> PROFILE </a> </li>
 			<li> <a href="tasks.php"> TASKS </a> </li>
 			<li> <a href="#"> REPORTS </a> </li>
-			<li> <a href="setup.php"> SETUP </a> </li>
+			<li> <a href="#"> SETUP </a> </li>
 			<li> <a href="#"> PORTAL </a> </li>
 			<li class="right img"> <a href="sessionStop.php"> <img src="img/logoutIcon.png" alt="Logout"> </a> </li>
 			<li class="right"> <?php echo $day_hour ?>, <?php echo $user_name ?> </li>

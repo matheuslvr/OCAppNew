@@ -185,12 +185,12 @@ nav ul li {
 	padding-top: 3%;
 }
 
-.divFooterTasksList {
-
+.divFooterTasksList{
 	background-color: #333333;
 	width: 100%;
 	height: 5%;
 	margin-left: 10%;
+	float: top;
 
 }
 
@@ -199,5 +199,7 @@ nav ul li {
 }
 
 .divFooterTasksList li {
+	
 	display: inline;
+
 }
