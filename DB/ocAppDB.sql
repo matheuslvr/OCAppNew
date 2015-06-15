@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2015 at 01:05 AM
+-- Generation Time: Jun 14, 2015 at 09:33 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `sub_task` (
   `task_id` int(11) NOT NULL,
   `sub_task_name` text NOT NULL,
   `sub_task_description` text NOT NULL,
+  `task_type_id` int(11) NOT NULL,
   `sub_task_time` int(11) NOT NULL,
   `sub_task_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
