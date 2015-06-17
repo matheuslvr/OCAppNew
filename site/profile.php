@@ -59,7 +59,7 @@ $hours_tasks = 0;
 $number_tasks = 0;
 $sql5 = "SELECT user_task_id, task_id FROM User_task WHERE user_id='{$user_id}'";
 $result5 = mysqli_query($conn, $sql5);
-if (mysqli_num_rows($result5) > 0) {
+if ($result5) {
 	while ($row = mysqli_fetch_assoc($result5)) {
 		$number_tasks += 1;
 		$task_id = $row["task_id"];

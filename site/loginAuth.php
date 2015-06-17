@@ -18,6 +18,7 @@
 
 
 // Create connection
+
 $conn = new mysqli($servername, $user_db, $password_db, $dbname);
 
 // Check connection
@@ -25,9 +26,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT user_type_id, user_password FROM User WHERE user_login = '{$username}'";
+$sql = "SELECT user_type_id, user_password FROM user WHERE user_login = '{$username}'";
 $result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
+if ($result) {
     $row = mysqli_fetch_assoc($result);
     if ($row["user_password"] <> $password) {
     	echo "SENHA ERRADA!"; // TRATAR SENHA ERRADA CORRETAMENTE
@@ -37,6 +38,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
 	echo "USERNAME NÃO EXISTE!"; // TRATAR USERNAME DESCONHECIDO
+	echo $username;
 }
 
 ?>

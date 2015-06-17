@@ -141,6 +141,43 @@ if ($conn->connect_error) {
 	  					</td>
   				</tr>
 
+  				<tr>
+						<td class="title"> User Type </td>
+						<td class="wrapper"> 
+	  						<div class="styled-select">
+	  						<select name="user_type_new">
+	  						
+							<?php 
+
+							$sql3 = "SELECT user_type_id, user_type_description FROM user_type";
+							$result3 = mysqli_query($conn, $sql3);
+							if ($result3 || mysqli_num_rows($result3) ) {
+								while ($row3 = mysqli_fetch_assoc($result3)){
+									$user_type_id_s = $row3["user_type_id"];
+									$user_type_description_s = $row3["user_type_description"];
+
+									echo "<option value='";
+									echo $user_type_id_s;
+									echo "' ";
+
+									if ($user_type_id == $user_type_id_s) {
+										echo "selected";
+									}
+
+									echo "> ";
+									echo $user_type_description_s;
+									echo "</option>";
+								}
+							}
+
+
+							?>
+							
+							</select>
+							</div>
+	  					</td>
+  				</tr>
+
 
   			</table>
 

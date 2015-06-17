@@ -115,6 +115,7 @@ if ($conn->connect_error) {
 					<th><input type="text" id="user_username1" placeholder="Login" name="user_login"/></th>
 					<th><input type="text" id="user_mail1" placeholder="Email" name="user_email"/></th>
 					<th><input type="text" id="user_tel1" placeholder="Phone" name="user_tel"/></th>
+					<th><input type="text" id="user_type1" placeholder="Type" name="user_type"/></th>
 					<th class="td_icon" valign="middle" onclick="document.getElementById('addUser').submit()"><i class="fa fa-plus smallIcon"></i></th>
 				</tr>
 				</form>
@@ -123,9 +124,10 @@ if ($conn->connect_error) {
 				<?php
 
 					$count = 1;
-					$sql = "SELECT user_id, user_first_name, user_last_name, user_login, user_mail, user_tel FROM User";
+					$sql = "SELECT user_id, user_first_name, user_last_name, user_login, user_mail, user_type_id, user_tel FROM User";
 					$result = mysqli_query($conn, $sql);
-					if (mysqli_num_rows($result) > 0){
+
+					if ($result || mysqli_num_rows($result) > 0){
 						while ($row=mysqli_fetch_assoc($result)){
 							if (( $count % 2 )== 0){
 								echo "<tr class='odd' valign='middle'>";
@@ -133,6 +135,13 @@ if ($conn->connect_error) {
 								echo "<tr>";
 							}
 							$count++;
+							$user_type_id = $row["user_type_id"];
+							$sql2 = "SELECT user_type_description FROM User_type WHERE user_type_id = '{$user_type_id}' ";
+							$result2 = mysqli_query($conn, $sql2);
+							if ($result2) {
+								$row2 = mysqli_fetch_assoc($result2);
+								$user_type = $row2["user_type_description"];
+							}
 
 							echo "<td valign='middle'>";
 							echo $row["user_first_name"];
@@ -150,6 +159,10 @@ if ($conn->connect_error) {
 							echo "</td>
 									<td valign='middle'>";
 							echo $row["user_tel"];
+
+							echo "</td>
+									<td valign='middle'>";
+							echo $user_type;
 
 							echo "</td> 
 								<td class='td_icon' valign='middle'>

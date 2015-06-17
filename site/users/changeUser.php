@@ -27,15 +27,16 @@ $firstname_new = $_POST["first_name_new"];
 $lastname_new = $_POST["last_name_new"];
 $email_new = $_POST["email_new"];
 $tel_new = $_POST["tel_new"];
+$user_type_new = $_POST["user_type_new"];
 
-echo $v . " ";
 
-$sql = "UPDATE user SET user_first_name = '{$firstname_new}', user_last_name = '{$lastname_new}', user_mail = '{$email_new}', user_tel = '{$tel_new}' WHERE user_id = '{$v}' ";
+$sql = "UPDATE user SET user_first_name = '{$firstname_new}', user_last_name = '{$lastname_new}', user_mail = '{$email_new}', user_tel = '{$tel_new}', user_type_id = '{$user_type_new}' WHERE user_id = '{$v}' ";
 $result = mysqli_query($conn, $sql);
 if (mysqli_affected_rows($conn)>0) {
 	header("Location:../users");
 }
 
+	header("Location:../users");
 
 
 ?>
