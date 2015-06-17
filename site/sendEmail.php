@@ -2,8 +2,10 @@
 
 $headers = 'From: <webmasterACE@webmasterACE.com>' . "\r\n";
 
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 
-header("Location: index.php");
+// JUST FOR NOW
+
+echo "<script> alert('Password successfully changed, check your email.'); </script>";
 
 ?>

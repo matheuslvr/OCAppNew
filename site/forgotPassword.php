@@ -15,10 +15,10 @@
 				<h2 class = "type"> Type your email here </h2>
 				<p class="field">
 					<input type="text" name="email" placeholder="Email">
-				<i class="icon-user icon-large"></i>
+				<i class="fa fa-user fa-lg"></i>
 			</p>
 			<p class="submit">
-				<button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+				<button type="submit" name="submit"><i class="fa fa-arrow-right fa-2x"></i></button>
 			</p>
 		</form>
 	</section>

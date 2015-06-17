@@ -2,7 +2,7 @@
 
 	/* SO VAMOS USAR QUANDO TIVER PAGINA PARA LOGIN :) */
 	$username = $_POST["username"];
-	$password = $_POST["password"];
+	$password = md5($_POST["password"]);
 
 	/* SO PARA TESTES 
 

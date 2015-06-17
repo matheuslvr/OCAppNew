@@ -14,14 +14,14 @@
 			<form class="form-1" action="loginAuth.php" method="POST">
 				<p class="field">
 					<input type="text" name="username" placeholder="Username">
-				<i class="icon-user icon-large"></i>
+				<i class="fa fa-user fa-lg"></i>
 			</p>
 			<p class="field">
 				<input type="password" name="password" placeholder="Password">
-				<i class="icon-lock icon-large"></i>
+				<i class="fa fa-lock fa-lg"></i>
 			</p>
 			<p class="submit">
-				<button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+				<button type="submit" name="submit"><i class="fa fa-arrow-right fa-2x"></i></button>
 			</p>
 
 		<h2><a href="forgotPassword.php" class="forgot"> Forgot your password? </a></h2>

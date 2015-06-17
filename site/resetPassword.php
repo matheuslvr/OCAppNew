@@ -27,14 +27,17 @@ if ($conn->connect_error) {
 
 	$sql2 = "UPDATE User SET user_password='{$password_encrypted}' WHERE user_mail = '{$email}'";
 	$result2 = mysqli_query($conn, $sql2);
-	if ($result2){
-		echo "SENHA TROCADA!"; // TRATAR SENHA CERTA
+	if (mysqli_affected_rows($conn)>0){
 		$to = $email;
 		$subject = "Troca de Senha - ACE Application";
 		$message = "Trocamos sua senha. Ela agora é " . $password_new . " . Enjoy! /o/";
 		include("sendEmail.php");
+
+		echo "<script> window.location.href='index.php' </script>";
+
+		//header("Location: index.php");
 	} else {
-		echo "EMAIL NÃO CADASTRADO NO SISTEMA!"; // TRATAR EMAIL DESCONHECIDO
+		echo "<script> alert('This email does not exist in our records, try again.'); window.location.href='forgotPassword.php'</script>";
 	}
 
 ?>
