@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 17, 2015 at 05:49 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jun 14, 2015 at 09:33 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -17,20 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ocAppDB`
+-- Database: `ocappdb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Blue_square`
---
-
-CREATE TABLE IF NOT EXISTS `Blue_square` (
-  `bsquare_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `bsquare_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -79,24 +67,7 @@ CREATE TABLE IF NOT EXISTS `sub_task` (
   `task_type_id` int(11) NOT NULL,
   `sub_task_time` int(11) NOT NULL,
   `sub_task_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sub_task`
---
-
-INSERT INTO `sub_task` (`sub_task_id`, `task_id`, `sub_task_name`, `sub_task_description`, `task_type_id`, `sub_task_time`, `sub_task_date`) VALUES
-(1, 4, '', '', 0, 500, '2015-06-15'),
-(2, 2, '', '', 0, 30, '2015-06-16'),
-(3, 3, '', '', 0, 970, '2015-06-16'),
-(4, 3, 'subTaskAalo', '', 0, 2, '2015-06-17'),
-(5, 4, '', '', 0, 40, '2015-06-17'),
-(6, 4, '', '', 0, 50, '2015-06-20'),
-(7, 4, '', '', 0, 600, '2015-06-20'),
-(8, 5, 'sub task welcome ', '', 0, 0, '2015-06-17'),
-(9, 6, 'LastSubTaks', '', 0, 10, '2015-06-27'),
-(10, 7, 'adl', '', 0, 400, '2015-06-02'),
-(12, 7, 'jalksfdj', '', 0, 400, '2015-06-27');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -108,26 +79,22 @@ CREATE TABLE IF NOT EXISTS `task` (
   `task_id` int(11) NOT NULL,
   `task_name` text NOT NULL,
   `task_type_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_team_id` int(11) NOT NULL,
   `task_description` text NOT NULL,
+  `task_time` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `task_beginning_date` date NOT NULL,
   `task_end_date` date NOT NULL,
   `task_status_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `task`
 --
 
-INSERT INTO `task` (`task_id`, `task_name`, `task_type_id`, `user_id`, `task_description`, `category_id`, `task_beginning_date`, `task_end_date`, `task_status_id`) VALUES
-(1, 'Task1', 1, 2, 'Task1Description', 1, '2015-06-01', '0000-00-00', 1),
-(2, 'Task2', 2, 3, 'Task2Description', 2, '2015-06-03', '0000-00-00', 2),
-(3, 'taskDOIDA', 0, 3, '', 0, '0000-00-00', '0000-00-00', 0),
-(4, 'TaskDOIDA22', 0, 1, '', 0, '0000-00-00', '0000-00-00', 0),
-(5, 'task bem beladona', 0, 4, '', 0, '0000-00-00', '0000-00-00', 0),
-(6, 'LastTazk', 0, 5, 'jfdkj', 0, '0000-00-00', '0000-00-00', 0),
-(7, 'jskdj', 0, 6, '', 0, '0000-00-00', '0000-00-00', 0);
+INSERT INTO `task` (`task_id`, `task_name`, `task_type_id`, `user_team_id`, `task_description`, `task_time`, `category_id`, `task_beginning_date`, `task_end_date`, `task_status_id`) VALUES
+(1, 'Task1', 1, 0, 'Task1Description', 20, 1, '2015-06-01', '0000-00-00', 1),
+(2, 'Task2', 2, 0, 'Task2Description', 40, 2, '2015-06-03', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -199,25 +166,39 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_password` text NOT NULL,
   `user_first_name` text NOT NULL,
   `user_last_name` text NOT NULL,
-  `user_DOB` date NOT NULL,
-  `user_week_hrs` int(11) NOT NULL,
-  `user_extra_hrs` int(11) NOT NULL,
   `user_type_id` int(11) NOT NULL,
   `user_tel` text,
   `user_mail` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_login`, `user_password`, `user_first_name`, `user_last_name`, `user_DOB`, `user_week_hrs`, `user_extra_hrs`, `user_type_id`, `user_tel`, `user_mail`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', 'Admin', '0000-00-00', 0, 0, 1, '0000000000', 'admin@admin.com'),
-(2, 'manager', 'manager', 'Manager', 'Manager', '0000-00-00', 0, 0, 2, '1111111111', 'manager@manager.com'),
-(3, 'teammember', 'teammember', 'Teammember', 'Teammember', '0000-00-00', 0, 0, 3, '22222222222', 'teammember@teammember.com'),
-(4, 'alo', 'alo', 'aloo', 'alooo', '0000-00-00', 0, 0, 0, NULL, ''),
-(5, 'LastUser', 'lastuser', 'Last', 'User', '0000-00-00', 0, 0, 0, '0000000000', 'ksjdksdjf@kajflkasdj'),
-(6, 'agooooora', 'sim', 'agooora', 'sim', '0000-00-00', 0, 0, 0, NULL, '');
+INSERT INTO `user` (`user_id`, `user_login`, `user_password`, `user_first_name`, `user_last_name`, `user_type_id`, `user_tel`, `user_mail`) VALUES
+(1, 'admin', '*4ACFE3202A5FF5CF467898FC58AAB1D615029441', 'Admin', 'Admin', 1, '0000000000', 'admin@admin.com'),
+(2, 'manager', '*7D2ABFF56C15D67445082FBB4ACD2DCD26C0ED57', 'Manager', 'Manager', 2, '1111111111', 'manager@manager.com'),
+(3, 'teammember', '*2EA75752B55BD59CF97094DCAA594A11BABB21D7', 'Teammember', 'Teammember', 3, '22222222222', 'teammember@teammember.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_task`
+--
+
+CREATE TABLE IF NOT EXISTS `user_task` (
+  `user_task_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_task`
+--
+
+INSERT INTO `user_task` (`user_task_id`, `user_id`, `task_id`) VALUES
+(1, 2, 1),
+(2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -229,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `user_team` (
   `user_team_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `team_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_team`
@@ -238,10 +219,7 @@ CREATE TABLE IF NOT EXISTS `user_team` (
 INSERT INTO `user_team` (`user_team_id`, `user_id`, `team_id`) VALUES
 (1, 1, 1),
 (2, 2, 2),
-(3, 3, 1),
-(4, 4, 1),
-(5, 5, 1),
-(6, 6, 1);
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -307,14 +285,19 @@ ALTER TABLE `task_type`
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
-  ADD PRIMARY KEY (`team_id`),
-  ADD UNIQUE KEY `team_id` (`team_id`);
+  ADD PRIMARY KEY (`team_id`), ADD UNIQUE KEY `team_id` (`team_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_task`
+--
+ALTER TABLE `user_task`
+  ADD PRIMARY KEY (`user_task_id`);
 
 --
 -- Indexes for table `user_team`
@@ -346,12 +329,12 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `sub_task`
 --
 ALTER TABLE `sub_task`
-  MODIFY `sub_task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `sub_task_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `task_status`
 --
@@ -371,12 +354,17 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user_task`
+--
+ALTER TABLE `user_task`
+  MODIFY `user_task_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_team`
 --
 ALTER TABLE `user_team`
-  MODIFY `user_team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `user_team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_type`
 --
