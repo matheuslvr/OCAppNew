@@ -3,3 +3,6 @@ This is the function to create and add to the dashboard
 	$chart = new ChartComponent();
 	// [.. configure component here ..]
 	$this->addComponent($chart);
+
+
+test
