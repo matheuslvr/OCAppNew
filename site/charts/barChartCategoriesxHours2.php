@@ -7,21 +7,7 @@
  * @license: see license.txt included in package
  */
  
-include("chartphp_dist.php");
-
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ocAppDB";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
+include("chartphp_dist.php"); 
 
 
 // Execute query and get the variables from the database
@@ -63,7 +49,7 @@ if (mysqli_num_rows($result5) > 0) {
 }
 
 
-$p = new chartphp();
+$p1 = new chartphp();
 
 $arrlength = count($category_name_task);
 // creating the arrays
@@ -73,17 +59,16 @@ $arrays[$x] = array($category_name_task[$x], (int)$time_task[$x]);
 
 }
 
-$p->data = array($arrays); // Set the arrays as the data to print the graph
+$p1->data = array($arrays); // Set the arrays as the data to print the graph
 
-$p->chart_type = "bar";
+$p1->chart_type = "bar";
 
 
 // Common Options
-$p->title = "Categories x Hours";
-$p->xlabel = "";
-$p->ylabel = "Hours";
+$p1->title = "Categories x Hours";
+$p1->xlabel = "";
+$p1->ylabel = "Hours";
 
-$out = $p->render('c1');
-$alo = "dfjlasdhfjl"
+$out = $p1->render('c1');
 
 ?>
