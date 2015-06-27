@@ -21,9 +21,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-include_once 'charts/lineChart.php';
-include_once 'charts/barTest.php';
-
+include_once 'charts/lineChartUserHoursxTeam1.php';
+include_once 'charts/barChartNumberTeamTasks3.php';
+//include_once 'charts/barChartCategoriesxHours2.php';
 
 $user_id = "";
 $user_first_name = "";
@@ -31,7 +31,7 @@ $user_type_id = "";
 $user_tel = "";
 $user_mail = "";
 
-$sql = "SELECT user_id, user_first_name, user_last_name, user_type_id, user_tel, user_mail FROM User WHERE user_login = '{$username}'";
+$sql = "SELECT user_id, user_first_name, user_last_name, user_type_id, user_tel, user_mail FROM user WHERE user_login = '{$username}'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result)) {
     $row = mysqli_fetch_assoc($result);
@@ -44,24 +44,39 @@ if (mysqli_num_rows($result)) {
     $user_tel = $row["user_tel"];
     $user_mail = $row["user_mail"];
 }
+
+$count_teams=0;
+$sql32 = "SELECT team_description FROM team";
+$result32 = mysqli_query($conn, $sql32);
+if (mysqli_num_rows($result32) > 0) {
+	while ($row = mysqli_fetch_assoc($result32)) {
+		$all_teams[$count_teams] = $row["team_description"];
+	
+		$count_teams++;
+	}
+}
+
 ?>
 
 
 <html>
 <head>
 	<title> Highest Good Network </title>
-	<link href="styles/profile.css" rel="stylesheet">
+	<link href="styles/reports.css" rel="stylesheet">
 	<link href="styles/basicStyle.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,100' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="scripts/charts/canvasjs.min.js"></script>
 	<script type="text/javascript" src="scripts/charts/membersxteam.js"></script>
 	<script src="scripts/jquery.min.js"></script>
 	<script src="scripts/chartphp.js"></script>
+	
+ 	<script type="text/javascript" src="scripts/jquery.autocomplete.min.js"></script>
+  	<script type="text/javascript" src="scripts/currency-autocomplete.js"></script>
 	<link rel="stylesheet" href="scripts/chartphp.css">
 </head>
 <body>
 
-	<nav>
+<nav>
 		<ul>
 			<li> <a href="#" class="active"> PROFILE </a> </li>
 			<li> <a href="#"> TASKS </a> </li>
@@ -72,13 +87,80 @@ if (mysqli_num_rows($result)) {
 			<li class="right"> Hi, <?php echo $user_first_name . " " . $user_last_name ?> </li>
 		</ul>
 	</nav>
+	<div class = "content">
+		<content>
+			<div class="divTeams">
+				<div class = "divTopBar">
+					
+						<div class="teamName"><?php echo $team; ?></div>
+						<div class="typeTeam">Type the team name here</div>
+				</div>
 
-	<content>
+				<article class="artLeft">
+					
+					<form action="" method="post" id="test"><input type="text" name="currency" class="biginput" id="autocomplete"></form>
+					<div class = "divLupaIcon">
+					<img class = "lupaIcon" src="img/reports/lupaIcon.png" onclick = "document.getElementById('test').submit();"></img>
+					</div>
+				<div id="barChartNumberTeamTasks">
+						<?php echo $outBarChartNumberTeamTasks; ?>
+				</div>
+				
 
-		<article class="artLeft">
 
-			<div id="chartContainer" style="height: 300px; width: 50%;">
+					</article>
+
+				<article class="artRight">
+
+				<div id="teamMembers">
+					Team Members
+				</div>
+				<div id="chartContainer">
+				</div>
+				
+				
+				
+
+				</article>
+			</div>
+			<div class="divUsers">
+				<div class = "divTopBarUsers">
+					
+						<div class="teamName"><?php echo $team; ?></div>
+						<div class="typeTeam">Type the team name here</div>
+				</div>
+
+				<article class="artLeft">
+					
+					<form action="" method="post" id="test"><input type="text" name="currency" class="biginput" id="autocomplete"></form>
+					<div class = "divLupaIcon">
+					<img class = "lupaIcon" src="img/reports/lupaIcon.png" onclick = "document.getElementById('test').submit();"></img>
+					</div>
+					<div id="barChartNumberTeamTasks">
+						<?php echo $outBarChartNumberTeamTasks; ?>
+					</div>
+				
+
+
+				</article>
+
+				<article class="artRight">
+
+				<div id="teamMembers">
+					Team Members
+				</div>
+				<div id="chartContainer">
+				</div>
+				
+				
+				
+
+				</article>
+			</div>
+
+		</content>
 	</div>
+
 	<div id="connectionPhpJs0" style="display:none;">
 		<?php echo json_encode($userNames);?>
 	</div>
@@ -94,23 +176,9 @@ if (mysqli_num_rows($result)) {
 	<div id="connectionPhpJs4" style="display:none;">
 		<?php echo json_encode($quantityDatesUser);?>
 	</div>
-
-		</article>
-
-		<article class="artRight">
-
-	
-	<style>
-		/* white color data labels */
-		.jqplot-data-label{color:white;}
-	</style>
-	<div style="width:40%; min-width:50px; height:50%;">
-		<?php echo $out ?>
+	<div id="connectionPhpJs6" style="display:none;">
+		<?php echo json_encode($all_teams);?>
 	</div>
-
-		</article>
-
-	</content>
 
 </body>
 </html>
